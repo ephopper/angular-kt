@@ -10,7 +10,7 @@ export class AppComponent {
   public winCashAndPrizes: boolean = false;
   public cashAndPrizes: string = 'BIG MONEY!!!!!';
 
-  public onGreaterThan3($event: any): void {
+  public onGreaterThan3($event: boolean): void {
     this.winCashAndPrizes = $event;
   }
 }
