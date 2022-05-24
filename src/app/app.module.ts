@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { LifecycleModule } from './lifecycle/lifecycle.module';
 import { TestModule } from './test/test.module';
 
 @NgModule({
@@ -10,7 +11,8 @@ import { TestModule } from './test/test.module';
   ],
   imports: [
     BrowserModule,
-    TestModule
+    LifecycleModule,
+    TestModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
