@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'foo';
+
+  public winCashAndPrizes: boolean = false;
+  public cashAndPrizes: string = 'BIG MONEY!!!!!';
+
+  public onGreaterThan3($event: any): void {
+    this.winCashAndPrizes = $event;
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CounterService } from '../counter.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { CounterService } from '../counter.service';
   styleUrls: ['./foo.component.scss']
 })
 export class FooComponent implements OnInit {
+
+  @Output() public isGreaterThan3: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private counterService: CounterService) { }
 
@@ -19,9 +21,15 @@ export class FooComponent implements OnInit {
 
   public incCount(): void {
     this.counterService.incCount();
+    this.isGreaterThan3.emit(this.checkCount());
   }
 
   public decCount(): void {
     this.counterService.decCount();
+    this.isGreaterThan3.emit(this.checkCount());
+  }
+
+  public checkCount(): boolean {
+    return this.counterService.count > 3;
   }
 }

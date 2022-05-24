@@ -13,6 +13,6 @@ import { ColorTextDirective } from '../color-text.directive';
   imports: [
     CommonModule
   ],
-  exports: [FooComponent],
+  exports: [FooComponent, ColorTextDirective],
 })
 export class TestModule { }
