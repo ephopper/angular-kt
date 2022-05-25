@@ -30,6 +30,6 @@ export class FooComponent implements OnInit {
   }
 
   public checkCount(): boolean {
-    return this.counterService.count > 3;
+    return this.counterService.getCount() > 3;
   }
 }
