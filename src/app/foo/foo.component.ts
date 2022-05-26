@@ -4,7 +4,8 @@ import { CounterService } from '../counter.service';
 @Component({
   selector: 'app-foo',
   templateUrl: './foo.component.html',
-  styleUrls: ['./foo.component.scss']
+  styleUrls: ['./foo.component.scss'],
+  providers: [CounterService]
 })
 export class FooComponent implements OnInit {
 
