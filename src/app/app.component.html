@@ -9,37 +9,43 @@
 
     <!-- Main body -->
     <div content>
-      <div>
-        <app-foo (isGreaterThan3)="onGreaterThan3($event)"></app-foo>
-        <h1
-          *ngIf="winCashAndPrizes"
-          appColorText
-          [color]="'green'"
-        >
-          {{ cashAndPrizes }}
-        </h1>
-      </div>
-
-      <div>
-        <app-foo (isGreaterThan3)="onGreaterThan3($event)"></app-foo>
-        <h1
-          *ngIf="winCashAndPrizes"
-          appColorText
-          [color]="'green'"
-        >
-          {{ cashAndPrizes }}
-        </h1>
-      </div>
-
-      <div>
-        <div *ngIf="showCOL">
-          <app-circle-of-life [someVal]="value"></app-circle-of-life>
-          <button (click)="onUpdateVal()">Update Value</button>
-        </div>
+      <app-card>
         <div>
-          <button (click)="onToggleCOL()">Toggle Circle of Life</button>
+          <app-foo (isGreaterThan3)="onGreaterThan3($event)"></app-foo>
+          <h1
+            *ngIf="winCashAndPrizes"
+            appColorText
+            [color]="'green'"
+          >
+            {{ cashAndPrizes }}
+          </h1>
         </div>
-      </div>
+      </app-card>
+
+      <app-card>
+        <div>
+          <app-foo (isGreaterThan3)="onGreaterThan3($event)"></app-foo>
+          <h1
+            *ngIf="winCashAndPrizes"
+            appColorText
+            [color]="'green'"
+          >
+            {{ cashAndPrizes }}
+          </h1>
+        </div>
+      </app-card>
+
+      <app-card>
+        <div>
+          <div *ngIf="showCOL">
+            <app-circle-of-life [someVal]="value"></app-circle-of-life>
+            <button (click)="onUpdateVal()">Update Value</button>
+          </div>
+          <div>
+            <button (click)="onToggleCOL()">Toggle Circle of Life</button>
+          </div>
+        </div>
+      </app-card>
     </div>
 
     <!-- Footer -->
