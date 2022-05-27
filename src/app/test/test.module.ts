@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooComponent } from '../foo/foo.component';
-import { ColorTextDirective } from '../color-text.directive';
+import { ColorTextDirective } from '../directives/color-text.directive';
 
 
 
