@@ -46,6 +46,16 @@
           </div>
         </div>
       </app-card>
+
+      <app-card>
+        <div class="input-container">
+          <input type="text" [(ngModel)]="text">
+          <img src="../assets/PinClipart.com_spongebob-clipart_5274026.png"/>
+        </div>
+        <div>
+          {{ text | snarkyText }}
+        </div>
+      </app-card>
     </div>
 
     <!-- Footer -->

@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  public text: string = '';
+
   public winCashAndPrizes: boolean = false;
   public cashAndPrizes: string = 'BIG MONEY!!!!!';
 

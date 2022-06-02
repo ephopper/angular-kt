@@ -3,10 +3,20 @@ h1 {
   padding-left: 1.5rem;
 }
 
+img {
+  height: 3rem;
+  margin-left: 1rem;
+}
+
 .container {
   padding: 0.5rem;
 }
 
 .layout-div {
   display: flex;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
 }
