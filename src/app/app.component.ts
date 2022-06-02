@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { users } from '../assets/users';
 
 @Component({
   selector: 'app-root',
@@ -9,23 +10,13 @@ export class AppComponent {
 
   public date: string = '';
   public text: string = '';
+  public users: any = users;
 
   public winCashAndPrizes: boolean = false;
   public cashAndPrizes: string = 'BIG MONEY!!!!!';
 
-  public value: number = 99;
-  public showCOL: boolean = false;
-
   public onGreaterThan3($event: boolean): void {
     this.winCashAndPrizes = $event;
-  }
-
-  public onUpdateVal(): void {
-    this.value++;
-  }
-
-  public onToggleCOL(): void {
-    this.showCOL = !this.showCOL;
   }
 
   public onNewDate(): void {

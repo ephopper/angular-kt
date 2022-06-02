@@ -23,31 +23,6 @@
       </app-card>
 
       <app-card>
-        <div>
-          <app-foo (isGreaterThan3)="onGreaterThan3($event)"></app-foo>
-          <h1
-            *ngIf="winCashAndPrizes"
-            appColorText
-            [color]="'green'"
-          >
-            {{ cashAndPrizes }}
-          </h1>
-        </div>
-      </app-card>
-
-      <app-card>
-        <div>
-          <div *ngIf="showCOL">
-            <app-circle-of-life [someVal]="value"></app-circle-of-life>
-            <button (click)="onUpdateVal()">Update Value</button>
-          </div>
-          <div>
-            <button (click)="onToggleCOL()">Toggle Circle of Life</button>
-          </div>
-        </div>
-      </app-card>
-
-      <app-card>
         <div class="input-container">
           <input type="text" [(ngModel)]="text">
           <img src="../assets/PinClipart.com_spongebob-clipart_5274026.png"/>
@@ -63,6 +38,16 @@
         <p class="date-label">With date pipe: <span class="date">{{ date | date }}</span></p>
         <p class="date-label">With date pipe with format string: <span class="date">{{ date | date:'EEEE MM/dd/YYYY' }}</span></p>
         <p class="date-label">With date pipe with format string and lowercase pipe: <span class="date">{{ date | date:'EEEE MM/dd/YYYY' | lowercase }}</span></p>
+      </app-card>
+
+      <app-card>
+        <app-card *ngFor="let user of users" [backgroundColor]="'#eaf4f4'">
+          <h3 class="name-card-header">{{ user.name }}</h3>
+          <div class="name-card-text-container">
+            <p class="name-card-text">Email: {{ user.email }}</p>
+            <p class="name-card-text">Phone: {{ user.phone }}</p>
+          </div>
+        </app-card>
       </app-card>
     </div>
 
