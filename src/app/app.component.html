@@ -62,6 +62,7 @@
         <p class="date-label">Raw date: <span class="date">{{ date }}</span></p>
         <p class="date-label">With date pipe: <span class="date">{{ date | date }}</span></p>
         <p class="date-label">With date pipe with format string: <span class="date">{{ date | date:'EEEE MM/dd/YYYY' }}</span></p>
+        <p class="date-label">With date pipe with format string and lowercase pipe: <span class="date">{{ date | date:'EEEE MM/dd/YYYY' | lowercase }}</span></p>
       </app-card>
     </div>
 
