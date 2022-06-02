@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  public date: string = '';
   public text: string = '';
 
   public winCashAndPrizes: boolean = false;
@@ -25,5 +26,10 @@ export class AppComponent {
 
   public onToggleCOL(): void {
     this.showCOL = !this.showCOL;
+  }
+
+  public onNewDate(): void {
+    const randNum = Math.floor(Math.random() * 10000000000000);
+    this.date = new Date(randNum).toISOString();
   }
 }
