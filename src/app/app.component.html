@@ -10,19 +10,6 @@
     <!-- Main body -->
     <div content>
       <app-card>
-        <div>
-          <app-foo (isGreaterThan3)="onGreaterThan3($event)"></app-foo>
-          <h1
-            *ngIf="winCashAndPrizes"
-            appColorText
-            [color]="'green'"
-          >
-            {{ cashAndPrizes }}
-          </h1>
-        </div>
-      </app-card>
-
-      <app-card>
         <div class="input-container">
           <input type="text" [(ngModel)]="text">
           <img src="../assets/PinClipart.com_spongebob-clipart_5274026.png"/>
@@ -33,21 +20,8 @@
       </app-card>
 
       <app-card>
-        <button (click)="onNewDate()">New Date</button>
-        <p class="date-label">Raw date: <span class="date">{{ date }}</span></p>
-        <p class="date-label">With date pipe: <span class="date">{{ date | date }}</span></p>
-        <p class="date-label">With date pipe with format string: <span class="date">{{ date | date:'EEEE MM/dd/YYYY' }}</span></p>
-        <p class="date-label">With date pipe with format string and lowercase pipe: <span class="date">{{ date | date:'EEEE MM/dd/YYYY' | lowercase }}</span></p>
-      </app-card>
-
-      <app-card>
-        <app-card *ngFor="let user of users" [backgroundColor]="'#eaf4f4'">
-          <h3 class="name-card-header">{{ user.name }}</h3>
-          <div class="name-card-text-container">
-            <p class="name-card-text">Email: {{ user.email }}</p>
-            <p class="name-card-text">Phone: {{ user.phone }}</p>
-          </div>
-        </app-card>
+        <button (click)="toggleSubscribe()">Toggle Subscribe Button</button>
+        <app-memory-leak *ngIf="showSubscribeButton"></app-memory-leak>
       </app-card>
     </div>
 
