@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { interval, Observable } from 'rxjs';
 
 @Component({
@@ -6,7 +6,7 @@ import { interval, Observable } from 'rxjs';
   templateUrl: './memory-leak.component.html',
   styleUrls: ['./memory-leak.component.scss']
 })
-export class MemoryLeakComponent implements OnInit {
+export class MemoryLeakComponent implements OnInit, OnDestroy {
 
   public interval$: Observable<number> = interval(1000);
 
@@ -15,8 +15,12 @@ export class MemoryLeakComponent implements OnInit {
   ngOnInit(): void { }
 
   public onSubscribe() {
-    console.log('subscription added')
-    this.interval$.subscribe((val: number) => console.log('val:', val))
+    console.log('subscription added');
+    this.interval$.subscribe((val: number) => console.log('val:', val));
+  }
+
+  public ngOnDestroy(): void {
+      console.log('in ngOnDestroy');
   }
 
 }
