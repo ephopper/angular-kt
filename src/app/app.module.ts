@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 import { LifecycleModule } from './test/lifecycle/lifecycle.module';
 import { TestModule } from './test/test.module';
+import { ObservablesModule } from './observables/observables.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { TestModule } from './test/test.module';
     LayoutModule,
     LifecycleModule,
     TestModule,
+    ObservablesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
