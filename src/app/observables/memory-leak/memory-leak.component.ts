@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { interval, Observable, Subject, takeUntil } from 'rxjs';
+import { interval, Observable, Subject, Subscription, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-memory-leak',
@@ -10,6 +10,9 @@ export class MemoryLeakComponent implements OnInit, OnDestroy {
   public interval$: Observable<number> = interval(1000);
   private subscriptionDestroyer$: Subject<void> = new Subject();
 
+  // option 2:
+  // private subscriptions: Subscription[] = [];
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -19,11 +22,17 @@ export class MemoryLeakComponent implements OnInit, OnDestroy {
     this.interval$
       .pipe(takeUntil(this.subscriptionDestroyer$))
       .subscribe((val: number) => console.log('val:', val));
+
+    // option 2:
+    // this.subscriptions.push(this.interval$.subscribe((val: number) => console.log('val:', val)));
   }
 
   public ngOnDestroy(): void {
     console.log('in ngOnDestroy');
     this.subscriptionDestroyer$.next();
     this.subscriptionDestroyer$.complete();
+
+    // option 2:
+    // this.subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
   }
 }
