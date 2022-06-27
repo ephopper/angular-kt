@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   public showSubscribeButton = true;
 
   public users$: Observable<UsersInterface[]> = this.store.pipe(select(selectUsers));
-  public loading$: Observable<boolean> = this.store.pipe(select(selectUsersLoading));
+  public isLoading$: Observable<boolean> = this.store.pipe(select(selectUsersLoading));
 
   constructor(private store: Store) {}
 
