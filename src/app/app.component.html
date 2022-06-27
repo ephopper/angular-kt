@@ -39,7 +39,7 @@
         </app-card>
       </ng-container>
 
-      <ng-container *ngIf="loading$ | async">
+      <ng-container *ngIf="isLoading$ | async">
         <div>
           <app-loading-spinner></app-loading-spinner>
         </div>

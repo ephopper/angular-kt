@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { UsersInterface } from './models/users.model';
-import { userDelete, userRequest } from './state/users/users.actions';
-import { selectUsers, selectUsersLoading } from './state/users/users.selectors';
+import { UsersFacade } from './state/users/users.facade';
 
 @Component({
   selector: 'app-root',
@@ -14,13 +12,13 @@ export class AppComponent implements OnInit {
   public text: string = '';
   public showSubscribeButton = true;
 
-  public users$: Observable<UsersInterface[]> = this.store.pipe(select(selectUsers));
-  public loading$: Observable<boolean> = this.store.pipe(select(selectUsersLoading));
+  public users$: Observable<UsersInterface[]> = this.usersFacade.users$;
+  public isLoading$: Observable<boolean> = this.usersFacade.isLoading$;
 
-  constructor(private store: Store) {}
+  constructor(private usersFacade: UsersFacade) {}
 
   public ngOnInit(): void {
-    this.store.dispatch(userRequest());
+    this.usersFacade.getUsers();
   }
 
   public toggleSubscribe() {
@@ -28,6 +26,6 @@ export class AppComponent implements OnInit {
   }
 
   public onDeleteUser(userId: number) {
-    this.store.dispatch(userDelete({ userId }));
+    this.usersFacade.deleteUsers(userId);
   }
 }
