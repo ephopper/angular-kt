@@ -1,7 +1,5 @@
 <section class="container">
-
   <app-layout>
-
     <!-- Header -->
     <div class="layout-div" header>
       <h1>HEADER TEXT!!!!</h1>
@@ -23,6 +21,29 @@
         <button (click)="toggleSubscribe()">Toggle Subscribe Button</button>
         <app-memory-leak *ngIf="showSubscribeButton"></app-memory-leak>
       </app-card>
+
+      <ng-container *ngIf="users$ | async as users">
+        <app-card *ngIf="users.length">
+          <app-card *ngFor="let user of users" [backgroundColor]="'#eaf4f4'">
+            <h3 class="name-card-header">{{ user.name }}</h3>
+            <div class="name-card-text-container">
+              <p class="name-card-text">Email: {{ user.email }}</p>
+              <p class="name-card-text">Phone: {{ user.phone }}</p>
+              <div>
+                <button class="delete-button" (click)="onDeleteUser(user.id)">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </app-card>
+        </app-card>
+      </ng-container>
+
+      <ng-container *ngIf="loading$ | async">
+        <div>
+          <app-loading-spinner></app-loading-spinner>
+        </div>
+      </ng-container>
     </div>
 
     <!-- Footer -->
