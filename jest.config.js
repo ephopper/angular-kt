@@ -10,6 +10,7 @@ module.exports = {
   coverageReporters: ['html'],
   coverageDirectory: 'coverage/my-app',
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths || {}, {
-    prefix: '<rootDir>/'
+    prefix: '<rootDir>/',
+    'src/(.*)': '<rootDir>/src/$1',
   })
 };
