@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ColorTextDirective } from '../directives/color-text.directive';
 
 import { FooComponent } from './foo.component';
 
@@ -8,9 +9,8 @@ describe('FooComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FooComponent ]
-    })
-    .compileComponents();
+      declarations: [FooComponent, ColorTextDirective],
+    }).compileComponents();
   });
 
   beforeEach(() => {

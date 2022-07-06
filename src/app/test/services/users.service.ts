@@ -9,7 +9,7 @@ export class UsersService {
   constructor(private http: HttpClient) {}
 
   public getUsers(): Observable<any> {
-    return timer(5000)
+    return timer(3000)
     .pipe(switchMap(() => this.http.get('https://jsonplaceholder.typicode.com/users')))
   }
 }
