@@ -34,7 +34,7 @@ describe('AppComponent', () => {
   });
 
   it('should call usersFacade.getUsers', () => {
-    spyOn(usersFacade, 'getUsers');
+    jest.spyOn(usersFacade, 'getUsers');
     app.ngOnInit();
 
     expect(usersFacade.getUsers).toHaveBeenCalled();
@@ -44,14 +44,14 @@ describe('AppComponent', () => {
     app.showSubscribeButton = true;
 
     app.toggleSubscribe();
-    expect(app.showSubscribeButton).toBeFalse();
+    expect(app.showSubscribeButton).toBe(false);
 
     app.toggleSubscribe();
-    expect(app.showSubscribeButton).toBeTrue();
+    expect(app.showSubscribeButton).toBe(true);
   });
 
   it('should call usersFacade.deleteUsers', () => {
-    spyOn(usersFacade, 'deleteUsers')
+    jest.spyOn(usersFacade, 'deleteUsers')
     app.onDeleteUser(1);
 
     expect(usersFacade.deleteUsers).toHaveBeenCalledWith(1);
