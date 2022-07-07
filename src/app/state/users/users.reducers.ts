@@ -13,7 +13,7 @@ export interface UsersState {
   loading: boolean;
 }
 
-const initialUsersState: UsersState = {
+export const initialUsersState: UsersState = {
   users: [],
   error: null,
   loading: false,
