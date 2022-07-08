@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { Store, StoreModule } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
 import { AppComponent } from './app.component';
 import { UsersFacade } from './state/users/users.facade';
 import { SnarkyTextPipe } from './test/pipes/snarky-text.pipe';
@@ -16,10 +16,9 @@ describe('AppComponent', () => {
       declarations: [AppComponent],
       imports: [
         FormsModule,
-        StoreModule.forRoot({}),
         TestModule,
       ],
-      providers: [UsersFacade, Store, SnarkyTextPipe],
+      providers: [UsersFacade, SnarkyTextPipe, provideMockStore()],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
 

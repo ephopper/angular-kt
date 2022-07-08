@@ -1,31 +1,27 @@
 import { TestBed } from '@angular/core/testing';
-import { Store, StoreModule } from '@ngrx/store';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { marbles } from 'rxjs-marbles/jest';
 import * as UserActions from './users.actions';
 import { UsersFacade } from './users.facade';
-import * as FromUsers from './users.reducers';
+import * as UserSelectors from './users.selectors';
 
 describe('Users Facade', () => {
   let facade: UsersFacade;
-  let store: Store;
+  let store: MockStore;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        StoreModule.forRoot({}),
-        StoreModule.forFeature('users', FromUsers.usersReducer),
-      ],
-      providers: [UsersFacade],
+      providers: [UsersFacade, provideMockStore()],
     });
     facade = TestBed.inject(UsersFacade);
-    store = TestBed.inject(Store);
+    store = TestBed.inject(MockStore);
   });
 
   it(
     'should select users',
     marbles((m) => {
       const users = m.cold('a', { a: [] });
-      store.dispatch(UserActions.userRequestSuccess({ users: [] }));
+      store.overrideSelector(UserSelectors.selectUsers, [] )
       m.expect(facade.users$).toBeObservable(users);
     })
   );
@@ -34,7 +30,7 @@ describe('Users Facade', () => {
     'should select loading',
     marbles((m) => {
       const loading = m.cold('a', { a: true });
-      store.dispatch(UserActions.userRequest());
+      store.overrideSelector(UserSelectors.selectUsersLoading, true);
       m.expect(facade.isLoading$).toBeObservable(loading);
     })
   );
