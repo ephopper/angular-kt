@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { Store, StoreModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
 import { UsersFacade } from './state/users/users.facade';
 import { SnarkyTextPipe } from './test/pipes/snarky-text.pipe';
@@ -14,13 +14,9 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
-      imports: [
-        FormsModule,
-        StoreModule.forRoot({}),
-        TestModule,
-      ],
-      providers: [UsersFacade, Store, SnarkyTextPipe],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      imports: [FormsModule, StoreModule.forRoot({}), TestModule],
+      providers: [UsersFacade, SnarkyTextPipe],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
 
     usersFacade = TestBed.inject(UsersFacade);
@@ -51,7 +47,7 @@ describe('AppComponent', () => {
   });
 
   it('should call usersFacade.deleteUsers', () => {
-    spyOn(usersFacade, 'deleteUsers')
+    spyOn(usersFacade, 'deleteUsers');
     app.onDeleteUser(1);
 
     expect(usersFacade.deleteUsers).toHaveBeenCalledWith(1);
