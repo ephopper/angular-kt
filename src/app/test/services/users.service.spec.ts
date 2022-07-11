@@ -1,11 +1,11 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { Observable, of } from 'rxjs';
 
 import { UsersService } from './users.service';
 
-class MockUsersService {
-  public getUsers(): Observable<any> {
+class MockHttpClient {
+  public get(): Observable<any> {
     return of('foo');
   }
 }
@@ -15,11 +15,10 @@ describe('UsersService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
       providers: [
         {
-          provide: UsersService,
-          useClass: MockUsersService,
+          provide: HttpClient,
+          useClass: MockHttpClient,
         },
       ],
     });
