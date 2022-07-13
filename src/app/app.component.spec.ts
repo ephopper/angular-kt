@@ -1,8 +1,9 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { provideMockStore } from '@ngrx/store/testing';
 import { AppComponent } from './app.component';
+import { LayoutModule } from './layout/layout.module';
+import { ObservablesModule } from './observables/observables.module';
 import { UsersFacade } from './state/users/users.facade';
 import { SnarkyTextPipe } from './test/pipes/snarky-text.pipe';
 import { TestModule } from './test/test.module';
@@ -16,10 +17,11 @@ describe('AppComponent', () => {
       declarations: [AppComponent],
       imports: [
         FormsModule,
+        LayoutModule,
+        ObservablesModule,
         TestModule,
       ],
       providers: [UsersFacade, SnarkyTextPipe, provideMockStore()],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
 
     usersFacade = TestBed.inject(UsersFacade);
